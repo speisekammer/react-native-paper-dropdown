@@ -23,9 +23,6 @@ import React, {
   Fragment,
 } from "react";
 import { Theme } from "react-native-paper/lib/typescript/types";
-import { TextInputProps } from "react-native-paper/lib/typescript/components/TextInput/TextInput";
-
-type Without<T, K> = Pick<T, Exclude<keyof T, K>>;
 
 export interface DropDownPropsInterface {
   multiSelect?: boolean;
@@ -34,7 +31,6 @@ export interface DropDownPropsInterface {
   label?: string | undefined;
   placeholder?: string | undefined;
   mode?: "outlined" | "flat" | undefined;
-  inputProps?: TextInputPropsWithoutTheme;
   list: Array<{
     label: string;
     value: string | number;
@@ -50,9 +46,20 @@ export interface DropDownPropsInterface {
   dropDownItemStyle?: ViewStyle;
   dropDownItemTextStyle?: TextStyle;
   accessibilityLabel?: string;
+  style?: any;
+  disabled?: boolean;
+  error?: boolean;
+  touchableProps?: any;
+  touchableStyle?: any;
+  selectionColor?: string;
+  underlineColor?: string;
+  activeUnderlineColor?: string;
+  outlineColor?: string;
+  activeOutlineColor?: string;
+  dense?: boolean;
+  editable?: boolean;
+  iconStyle?: any;
 }
-
-type TextInputPropsWithoutTheme = Without<TextInputProps, "theme">;
 
 const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
   (props, ref) => {
@@ -65,7 +72,6 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
       mode,
       label,
       placeholder,
-      inputProps,
       list,
       dropDownContainerMaxHeight,
       dropDownContainerHeight,
@@ -76,6 +82,19 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
       dropDownItemTextStyle,
       dropDownItemSelectedTextStyle,
       accessibilityLabel,
+      style,
+      disabled,
+      error,
+      touchableProps,
+      touchableStyle,
+      selectionColor,
+      underlineColor,
+      activeUnderlineColor,
+      outlineColor,
+      activeOutlineColor,
+      dense,
+      editable,
+      iconStyle,
     } = props;
     const [displayValue, setDisplayValue] = useState("");
     const [inputLayout, setInputLayout] = useState({
@@ -91,7 +110,9 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
     };
 
     const showDropDown = () => {
-      setVisible(true);
+      if (editable !== false) {
+        setVisible(true);
+      }
     };
 
     const onLayout = (event: LayoutChangeEvent) => {
@@ -154,8 +175,50 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
             onPress={showDropDown}
             onLayout={onLayout}
             accessibilityLabel={accessibilityLabel}
+            onFocus={touchableProps.onFocus}
+            onBlur={touchableProps.onBlur}
+            borderless={touchableProps.borderless}
+            background={touchableProps.background}
+            centered={touchableProps.centered}
+            disabled={disabled}
+            rippleColor={touchableProps.rippleColor}
+            underlayColor={touchableProps.underlayColor}
+            style={{
+              ...touchableStyle,
+              flexDirection: 'column',
+              flexWrap: 'nowrap',
+              justifyContent: 'flex-start',
+              alignItems: 'stretch',
+              margin: style.margin,
+              marginTop: style.marginTop,
+              marginRight: style.marginRight,
+              marginBottom: style.marginBottom,
+              marginLeft: style.marginLeft,
+              padding: 0,
+              paddingTop: 0,
+              paddingRight: 0,
+              paddingBottom: 0,
+              paddingLeft: 0,
+              overflow: 'visible',
+            }}
+            theme={theme}
           >
-            <View pointerEvents={"none"}>
+            <View
+              pointerEvents={"none"}
+              style={{
+                flexGrow: 1,
+                flexDirection: touchableStyle.flexDirection,
+                flexWrap: touchableStyle.flexWrap,
+                justifyContent: touchableStyle.justifyContent,
+                alignItems: touchableStyle.alignItems,
+                padding: touchableStyle.padding,
+                paddingTop: touchableStyle.paddingTop,
+                paddingRight: touchableStyle.paddingRight,
+                paddingBottom: touchableStyle.paddingBottom,
+                paddingLeft: touchableStyle.paddingLeft,
+                overflow: touchableStyle.overflow,
+              }}
+            >
               <TextInput
                 value={displayValue}
                 mode={mode}
@@ -164,9 +227,33 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
                 pointerEvents={"none"}
                 theme={theme}
                 right={
-                  <TextInput.Icon name={visible ? "menu-up" : "menu-down"} />
+                  <TextInput.Icon
+                    name={visible ? "menu-up" : "menu-down"}
+                    disabled={disabled}
+                    forceTextInputFocus={false}
+                    style={iconStyle}
+                    theme={theme}
+                  />
                 }
-                {...inputProps}
+                style={{
+                  ...props.style,
+                  margin: 0,
+                  marginTop: 0,
+                  marginRight: 0,
+                  marginBottom: 0,
+                  marginLeft: 0,
+                }}
+                disabled={disabled}
+                error={error}
+                selectionColor={selectionColor}
+                underlineColor={underlineColor}
+                activeUnderlineColor={activeUnderlineColor}
+                outlineColor={outlineColor}
+                activeOutlineColor={activeOutlineColor}
+                dense={dense}
+                multiline={false}
+                numberOfLines={1}
+                editable={false}
               />
             </View>
           </TouchableRipple>

@@ -46,18 +46,18 @@ export interface DropDownPropsInterface {
   dropDownItemStyle?: ViewStyle;
   dropDownItemTextStyle?: TextStyle;
   accessibilityLabel?: string;
-  style?: any;
   disabled?: boolean;
-  error?: boolean;
+  editable?: boolean;
+  style?: any;
   touchableProps?: any;
   touchableStyle?: any;
+  error?: boolean;
   selectionColor?: string;
   underlineColor?: string;
   activeUnderlineColor?: string;
   outlineColor?: string;
   activeOutlineColor?: string;
   dense?: boolean;
-  editable?: boolean;
   iconStyle?: any;
 }
 
@@ -82,18 +82,18 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
       dropDownItemTextStyle,
       dropDownItemSelectedTextStyle,
       accessibilityLabel,
-      style,
-      disabled,
+      disabled = false,
+      editable = true,
+      style = {},
+      touchableProps = {},
+      touchableStyle = {},
       error,
-      touchableProps,
-      touchableStyle,
       selectionColor,
       underlineColor,
       activeUnderlineColor,
       outlineColor,
       activeOutlineColor,
       dense,
-      editable,
       iconStyle,
     } = props;
     const [displayValue, setDisplayValue] = useState("");
@@ -110,7 +110,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
     };
 
     const showDropDown = () => {
-      if (editable !== false) {
+      if (editable) {
         setVisible(true);
       }
     };

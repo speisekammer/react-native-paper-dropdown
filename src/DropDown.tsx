@@ -28,10 +28,7 @@ import { TextInputProps } from "react-native-paper/lib/typescript/components/Tex
 type Without<T, K> = Pick<T, Exclude<keyof T, K>>;
 
 export interface DropDownPropsInterface {
-  visible: boolean;
   multiSelect?: boolean;
-  onDismiss: () => void;
-  showDropDown: () => void;
   value: any;
   setValue: (_value: any) => void;
   label?: string | undefined;

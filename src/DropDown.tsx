@@ -30,7 +30,7 @@ type Without<T, K> = Pick<T, Exclude<keyof T, K>>;
 export interface DropDownPropsInterface {
   multiSelect?: boolean;
   value: any;
-  setValue: (_value: any) => void;
+  onChangeValue: (_value: any) => void;
   label?: string | undefined;
   placeholder?: string | undefined;
   mode?: "outlined" | "flat" | undefined;
@@ -60,7 +60,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
     const {
       multiSelect = false,
       value,
-      setValue,
+      onChangeValue,
       activeColor,
       mode,
       label,
@@ -130,14 +130,14 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
           const valueIndex = value.indexOf(currentValue);
           const values = value.split(",");
           if (valueIndex === -1) {
-            setValue([...values, currentValue].join(","));
+            onChangeValue([...values, currentValue].join(","));
           } else {
-            setValue(
+            onChangeValue(
               [...values].filter((value) => value !== currentValue).join(",")
             );
           }
         } else {
-          setValue(currentValue);
+          onChangeValue(currentValue);
         }
       },
       [value]

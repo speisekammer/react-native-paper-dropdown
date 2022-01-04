@@ -235,14 +235,6 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
                     theme={theme}
                   />
                 }
-                style={{
-                  ...props.style,
-                  margin: 0,
-                  marginTop: 0,
-                  marginRight: 0,
-                  marginBottom: 0,
-                  marginLeft: 0,
-                }}
                 disabled={disabled}
                 error={error}
                 selectionColor={selectionColor}
@@ -253,6 +245,14 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
                 dense={dense}
                 multiline={false}
                 numberOfLines={1}
+                style={{
+                  ...props.style,
+                  margin: 0,
+                  marginTop: 0,
+                  marginRight: 0,
+                  marginBottom: 0,
+                  marginLeft: 0,
+                }}
                 editable={false}
               />
             </View>

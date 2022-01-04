@@ -62,9 +62,6 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
     const activeTheme = useTheme();
     const {
       multiSelect = false,
-      visible,
-      onDismiss,
-      showDropDown,
       value,
       setValue,
       activeColor,
@@ -90,6 +87,15 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
       x: 0,
       y: 0,
     });
+    const [visible, setVisible] = useState(false);
+
+    const onDismiss = () => {
+      setVisible(false);
+    };
+
+    const showDropDown = () => {
+      setVisible(true);
+    };
 
     const onLayout = (event: LayoutChangeEvent) => {
       setInputLayout(event.nativeEvent.layout);

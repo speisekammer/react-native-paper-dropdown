@@ -1,42 +1,49 @@
 {
-  "name": "react-native-paper-dropdown",
-  "version": "1.0.7",
-  "description": "Dropdown component using React Native Paper TextInput and Menu, now also with multiselect",
-  "files": [
-    "dist"
+  "name": "@hashiprobr/react-native-paper-dropdown",
+  "version": "1.0.0",
+  "description": "Fork of react-native-paper-dropdown",
+  "keywords": [
+    "JavaScript",
+    "React",
+    "React Native",
+    "React Native Paper",
+    "React Native Paper Component",
+    "DropDown",
+    "Material Design"
   ],
-  "main": "dist/DropDown.js",
-  "types": "dist/DropDown.d.ts",
-  "scripts": {
-    "build": "tsc"
+  "homepage": "https://github.com/hashiprobr/react-native-paper-dropdown#readme",
+  "bugs": {
+    "url": "https://github.com/hashiprobr/react-native-paper-dropdown/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fateh999/react-native-paper-dropdown.git"
+    "url": "git+https://github.com/hashiprobr/react-native-paper-dropdown.git"
   },
-  "keywords": [
-    "Dropdown",
-    "Material",
-    "Dropdown",
-    "React",
-    "Native",
-    "Paper"
-  ],
-  "author": "Fateh Farooqui",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fateh999/react-native-paper-dropdown/issues"
-  },
-  "homepage": "https://github.com/fateh999/react-native-paper-dropdown#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+  "author": "Marcelo Hashimoto",
+  "contributors": [
+    {
+      "name": "Fateh Farooqui",
+      "url": "https://github.com/fateh999"
+    }
+  ],
+  "main": "dist/DropDown.js",
+  "types": "dist/DropDown.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
   },
   "peerDependencies": {
+    "@types/react": "*",
+    "@types/react-native": "*",
     "react": "*",
     "react-native": "*",
     "react-native-paper": "*",
-    "@types/react": "*",
-    "@types/react-native": "*",
     "typescript": "*"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }

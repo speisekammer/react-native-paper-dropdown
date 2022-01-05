@@ -47,9 +47,15 @@ export interface DropDownPropsInterface {
   dropDownItemTextStyle?: TextStyle;
   accessibilityLabel?: string;
   disabled?: boolean;
-  editable?: boolean;
+  onFocus?: (_value: any) => void;
+  onBlur?: (_value: any) => void;
   style?: any;
-  touchableProps?: any;
+  editable?: boolean;
+  borderless?: boolean;
+  background?: object;
+  centered?: boolean;
+  rippleColor?: string;
+  underlayColor?: string;
   touchableStyle?: any;
   error?: boolean;
   selectionColor?: string;
@@ -58,6 +64,7 @@ export interface DropDownPropsInterface {
   outlineColor?: string;
   activeOutlineColor?: string;
   dense?: boolean;
+  iconColor?: string;
   iconStyle?: any;
 }
 
@@ -82,10 +89,16 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
       dropDownItemTextStyle,
       dropDownItemSelectedTextStyle,
       accessibilityLabel,
-      disabled = false,
-      editable = true,
+      disabled,
+      onFocus = () => { },
+      onBlur = () => { },
       style = {},
-      touchableProps = {},
+      editable,
+      borderless,
+      background,
+      centered,
+      rippleColor,
+      underlayColor,
       touchableStyle = {},
       error,
       selectionColor,
@@ -94,6 +107,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
       outlineColor,
       activeOutlineColor,
       dense,
+      iconColor,
       iconStyle,
     } = props;
     const [displayValue, setDisplayValue] = useState("");
@@ -110,7 +124,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
     };
 
     const showDropDown = () => {
-      if (editable) {
+      if (editable !== false) {
         setVisible(true);
       }
     };
@@ -175,14 +189,14 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
             onPress={showDropDown}
             onLayout={onLayout}
             accessibilityLabel={accessibilityLabel}
-            onFocus={touchableProps.onFocus}
-            onBlur={touchableProps.onBlur}
-            borderless={touchableProps.borderless}
-            background={touchableProps.background}
-            centered={touchableProps.centered}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            borderless={borderless}
+            background={background}
+            centered={centered}
             disabled={disabled}
-            rippleColor={touchableProps.rippleColor}
-            underlayColor={touchableProps.underlayColor}
+            rippleColor={rippleColor}
+            underlayColor={underlayColor}
             style={{
               ...touchableStyle,
               flexDirection: 'column',
@@ -231,6 +245,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
                     name={visible ? "menu-up" : "menu-down"}
                     disabled={disabled}
                     forceTextInputFocus={false}
+                    color={iconColor}
                     style={iconStyle}
                     theme={theme}
                   />
@@ -246,7 +261,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
                 multiline={false}
                 numberOfLines={1}
                 style={{
-                  ...props.style,
+                  ...style,
                   margin: 0,
                   marginTop: 0,
                   marginRight: 0,

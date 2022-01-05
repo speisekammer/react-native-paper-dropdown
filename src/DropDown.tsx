@@ -199,6 +199,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
             underlayColor={underlayColor}
             style={{
               ...touchableStyle,
+              flexGrow: 1,
               flexDirection: 'column',
               flexWrap: 'nowrap',
               justifyContent: 'flex-start',
@@ -221,16 +222,6 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
               pointerEvents={"none"}
               style={{
                 flexGrow: 1,
-                flexDirection: touchableStyle.flexDirection,
-                flexWrap: touchableStyle.flexWrap,
-                justifyContent: touchableStyle.justifyContent,
-                alignItems: touchableStyle.alignItems,
-                padding: touchableStyle.padding,
-                paddingTop: touchableStyle.paddingTop,
-                paddingRight: touchableStyle.paddingRight,
-                paddingBottom: touchableStyle.paddingBottom,
-                paddingLeft: touchableStyle.paddingLeft,
-                overflow: touchableStyle.overflow,
               }}
             >
               <TextInput
@@ -262,6 +253,8 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
                 numberOfLines={1}
                 style={{
                   ...style,
+                  flexGrow: 1,
+                  alignSelf: 'stretch',
                   margin: 0,
                   marginTop: 0,
                   marginRight: 0,

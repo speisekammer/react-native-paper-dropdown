@@ -1,7 +1,7 @@
 {
   "name": "@hashiprobr/react-native-paper-dropdown",
-  "version": "1.0.5",
-  "description": "Fork of react-native-paper-dropdown",
+  "version": "1.0.6",
+  "description": "A fork of Fateh Farooqui's react-native-paper-dropdown with additional configurability",
   "keywords": [
     "JavaScript",
     "React",

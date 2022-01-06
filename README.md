@@ -12,13 +12,13 @@ Install
 With npm:
 
 ```
-npm install @hashiprobr/react-native-paper-dropdown
+npm install @hashiprobr/react-use-mount-and-update @hashiprobr/react-native-paper-dropdown
 ```
 
 With yarn:
 
 ```
-yarn add @hashiprobr/react-native-paper-dropdown
+yarn add @hashiprobr/react-use-mount-and-update @hashiprobr/react-native-paper-dropdown
 ```
 
 If using Expo, add the module to `webpack.config.js`:

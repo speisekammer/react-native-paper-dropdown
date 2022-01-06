@@ -17,12 +17,13 @@ import {
 import React, {
   ReactNode,
   forwardRef,
-  useEffect,
   useState,
   useCallback,
   Fragment,
 } from "react";
 import { Theme } from "react-native-paper/lib/typescript/types";
+
+const { useUpdate } = require("@hashiprobr/react-use-mount-and-update");
 
 export interface DropDownPropsInterface {
   multiSelect?: boolean;
@@ -133,7 +134,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
       setInputLayout(event.nativeEvent.layout);
     };
 
-    useEffect(() => {
+    useUpdate(() => {
       if (multiSelect) {
         const _labels = list
           .filter((_) => value.indexOf(_.value) !== -1)

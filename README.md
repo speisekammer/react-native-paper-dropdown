@@ -6,19 +6,35 @@ react-native-paper-dropdown
 with additional configurability**
 
 
+Peer dependencies
+-----------------
+
+``` json
+{
+    "@hashiprobr/react-use-mount-and-update": "*",
+    "@types/react": "*",
+    "@types/react-native": "*",
+    "react": "*",
+    "react-native": "*",
+    "react-native-paper": "*",
+    "typescript": "*"
+}
+```
+
+
 Install
 -------
 
 With npm:
 
 ```
-npm install @hashiprobr/react-use-mount-and-update @hashiprobr/react-native-paper-dropdown
+npm install @hashiprobr/react-native-paper-dropdown
 ```
 
 With yarn:
 
 ```
-yarn add @hashiprobr/react-use-mount-and-update @hashiprobr/react-native-paper-dropdown
+yarn add @hashiprobr/react-native-paper-dropdown
 ```
 
 If using Expo, add the module to `webpack.config.js`:
@@ -32,7 +48,7 @@ module.exports = async function (env, argv) {
         babel: {
             dangerouslyAddModulePathsToTranspile: [
                 '@hashiprobr/react-native-paper-dropdown',
-            ]
+            ],
         },
     }, argv);
     return config;

@@ -100,7 +100,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
       centered,
       rippleColor,
       underlayColor,
-      touchableStyle = {},
+      touchableStyle,
       error,
       selectionColor,
       underlineColor,
@@ -279,11 +279,11 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
           style={{
             ...(dropDownContainerHeight
               ? {
-                  height: dropDownContainerHeight,
-                }
+                height: dropDownContainerHeight,
+              }
               : {
-                  maxHeight: dropDownContainerMaxHeight || 200,
-                }),
+                maxHeight: dropDownContainerMaxHeight || 200,
+              }),
           }}
         >
           {list.map((_item, _index) => (

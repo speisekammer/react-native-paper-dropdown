@@ -13,6 +13,7 @@ import {
   TextInput,
   TouchableRipple,
   useTheme,
+  MD3Theme
 } from "react-native-paper";
 import React, {
   ReactNode,
@@ -21,7 +22,6 @@ import React, {
   useCallback,
   Fragment,
 } from "react";
-import { Theme } from "react-native-paper/lib/typescript/types";
 
 const { useUpdate } = require("@hashiprobr/react-use-mount-and-update");
 
@@ -40,7 +40,7 @@ export interface DropDownPropsInterface {
   dropDownContainerMaxHeight?: number;
   dropDownContainerHeight?: number;
   activeColor?: string;
-  theme?: Theme;
+  theme?: MD3Theme;
   dropDownStyle?: ViewStyle;
   dropDownItemSelectedTextStyle?: TextStyle;
   dropDownItemSelectedStyle?: ViewStyle;
@@ -234,7 +234,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
                 theme={theme}
                 right={
                   <TextInput.Icon
-                    name={visible ? "menu-up" : "menu-down"}
+                    icon={visible ? "menu-up" : "menu-down"}
                     disabled={disabled}
                     forceTextInputFocus={false}
                     color={iconColor}
@@ -305,7 +305,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
                     titleStyle={{
                       color: isActive(_item.value)
                         ? activeColor || (theme || activeTheme).colors.primary
-                        : (theme || activeTheme).colors.text,
+                        : (theme || activeTheme).colors.onSurface,
                       ...(isActive(_item.value)
                         ? dropDownItemSelectedTextStyle
                         : dropDownItemTextStyle),

@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hashiprobr/react-native-paper-dropdown.git"
+    "url": "git+https://github.com/speisekammer/react-native-paper-dropdown.git"
   },
   "license": "MIT",
   "author": "Marcelo Hashimoto",
@@ -45,6 +45,6 @@
     "typescript": "*"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://npm.pkg.github.com/"
   }
 }
